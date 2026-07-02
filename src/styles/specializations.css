@@ -1,0 +1,80 @@
+.specializations {
+  padding: 120px 10%;
+}
+
+.specializations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.specialization-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  padding: 30px;
+  backdrop-filter: blur(14px);
+}
+
+.specialization-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(56, 189, 248, 0.15),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.specialization-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 22px 60px rgba(56, 189, 248, 0.1);
+}
+
+.specialization-card:hover::before {
+  opacity: 1;
+}
+
+.specialization-icon,
+.specialization-card h3,
+.specialization-card p {
+  position: relative;
+}
+
+.specialization-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 14px;
+  font-size: 22px;
+  margin-bottom: 26px;
+}
+
+.specialization-card h3 {
+  color: var(--text);
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.specialization-card p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+@media (max-width: 1000px) {
+  .specializations {
+    padding: 90px 7%;
+  }
+
+  .specializations-grid {
+    grid-template-columns: 1fr;
+  }
+}
