@@ -5,6 +5,8 @@ function Projects() {
   const featuredProject = projects.find((project) => project.featured);
   const otherProjects = projects.filter((project) => !project.featured);
 
+  const hasLink = (link) => link && link !== "#";
+
   return (
     <section className="projects" id="projects">
       <SectionTitle
@@ -18,7 +20,6 @@ function Projects() {
             <span className="featured-label">Featured Project</span>
 
             <h3>{featuredProject.title}</h3>
-
             <p className="featured-subtitle">{featuredProject.subtitle}</p>
 
             <p className="featured-description">
@@ -39,10 +40,21 @@ function Projects() {
               ))}
             </div>
 
-            <div className="project-links">
-              <a href={featuredProject.github}>View Code</a>
-              <a href={featuredProject.demo}>Live Preview</a>
-            </div>
+            {(hasLink(featuredProject.github) || hasLink(featuredProject.demo)) && (
+              <div className="project-links">
+                {hasLink(featuredProject.github) && (
+                  <a href={featuredProject.github} target="_blank" rel="noreferrer">
+                    View Code
+                  </a>
+                )}
+
+                {hasLink(featuredProject.demo) && (
+                  <a href={featuredProject.demo} target="_blank" rel="noreferrer">
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="featured-preview">
@@ -83,10 +95,21 @@ function Projects() {
               ))}
             </div>
 
-            <div className="project-links">
-              <a href={project.github}>View Code</a>
-              <a href={project.demo}>Live Preview</a>
-            </div>
+            {(hasLink(project.github) || hasLink(project.demo)) && (
+              <div className="project-links">
+                {hasLink(project.github) && (
+                  <a href={project.github} target="_blank" rel="noreferrer">
+                    View Code
+                  </a>
+                )}
+
+                {hasLink(project.demo) && (
+                  <a href={project.demo} target="_blank" rel="noreferrer">
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            )}
           </article>
         ))}
       </div>

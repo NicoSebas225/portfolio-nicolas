@@ -96,5 +96,12 @@
 .navbar nav a:hover::after {
   width: 100%;
 }
+.navbar nav a.active-link {
+  color: var(--primary);
+}
+
+.navbar nav a.active-link::after {
+  width: 100%;
+}
   
 }
